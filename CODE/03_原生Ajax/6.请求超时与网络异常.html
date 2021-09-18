@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IE缓存问题</title>
-    <style>
-        #result {
-            width: 200px;
-            height: 200px;
-            border: solid 1px teal;
-        }
-    </style>
+    <title>请求超时与网络异常</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 200px;
+      border: solid 1px teal;
+    }
+  </style>
 </head>
 <body>
     <button>点击发送请求</button>
@@ -20,7 +20,20 @@
 
         btn.addEventListener('click', function ( ) {
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", 'http://127.0.0.1:8000/ie?t='+Date.now());
+
+            // 超时设置 2s
+            xhr.timeout = 2000;
+            // 超时回调
+            xhr.ontimeout = function () {
+                alert("网络异常，请稍后重试");
+            };
+
+            // 网络异常回调
+            xhr.onerror = function () {
+                alert("你的网络似乎出了问题~~~");
+            }
+
+            xhr.open("GET", 'http://127.0.0.1:8000/delay  ');
             xhr.send();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
