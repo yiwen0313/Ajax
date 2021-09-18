@@ -12,7 +12,15 @@ app.get('/server', (request, response)=>{
     response.setHeader('Access-Control-Allow-Origin', '*');
 
     // 设置响应
-    response.send('HELLO AJAX');
+    response.send('HELLO  AJAX');
+});
+
+app.post('/server', (request, response)=>{
+    // 设置响应头  设置允许跨越
+    response.setHeader('Access-Control-Allow-Origin', '*');
+
+    // 设置响应
+    response.send('HELLO AJAX POST');
 });
 
 // 4.监听端口 启动服务
