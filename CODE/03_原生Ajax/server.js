@@ -49,7 +49,19 @@ app.all('/json-server', (request, response) => {
     response.send(str);
 });
 
+// axios 服务
 app.all('/axios-server', (request, response) => {
+    // 设置响应头  设置允许跨越
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    //响应头
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    // 响应一个数据
+    const data = {name: 'gxy'};
+    response.send( JSON.stringify(data));
+});
+
+//fetch 服务
+app.all('/fetch-server', (request, response) => {
     // 设置响应头  设置允许跨越
     response.setHeader('Access-Control-Allow-Origin', '*');
     //响应头
