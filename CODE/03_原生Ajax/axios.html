@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios 发送 AJAX请求</title>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+<body>
+<button>GET</button>
+<button>POST</button>
+<button>AJAX</button>
+
+<script>
+    const btns = document.querySelectorAll('button');
+
+    // 配置 baseURL
+    axios.defaults.baseURL = 'http://127.0.0.1:8000';
+
+    btns[0].onclick = function () {
+        //GET请求
+        axios.get('/axios-server', {
+            // url参数
+            params: {
+                id: 100,
+                vip: 7
+            },
+            // 请求头信息
+            headers: {
+                name: 'yw',
+                age: 21
+            }
+        }).then(value => {
+            console.log(value);
+        });
+    }
+
+
+    btns[1].onclick = function () {
+        axios.post('http://127.0.0.1:8000/axios-server', {
+            username: 'admin',
+            password: 'admin'
+        }, {
+            //url
+            params: {
+                id: 200,
+                vip: 9
+            },
+            //请求头参数
+            headers: {
+                height: 180,
+                weight: 180
+            }
+
+        });
+    }
+</script>
+</body>
+</html>

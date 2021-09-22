@@ -37,10 +37,8 @@ app.get('/delay', (request, response) => {
 app.all('/json-server', (request, response) => {
     // 设置响应头  设置允许跨越
     response.setHeader('Access-Control-Allow-Origin', '*');
-
     //响应头
     response.setHeader('Access-Control-Allow-Headers', '*');
-
     // 响应一个数据
     const data = {
         name: 'gxy'
@@ -49,6 +47,16 @@ app.all('/json-server', (request, response) => {
     let str = JSON.stringify(data);
     // 设置响应
     response.send(str);
+});
+
+app.all('/axios-server', (request, response) => {
+    // 设置响应头  设置允许跨越
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    //响应头
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    // 响应一个数据
+    const data = {name: 'gxy'};
+    response.send( JSON.stringify(data));
 });
 
 // 4.监听端口 启动服务
